@@ -20,6 +20,10 @@ app.use(cors({
 app.use(cookieParser());
 
 mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 30000, // 30 seconds
+    socketTimeoutMS: 45000, // 45 seconds
 })
     .then(() => console.log('connected'))
     .catch((error) => console.log(error));
