@@ -46,7 +46,8 @@ router.post('/login', async (req, res, next) => {
     console.log(token);
     res.cookie('x_auth', token, {
             httpOnly: true,
-            sameSite: 'strict',
+            secure: true,
+            sameSite: 'none',
         })
         .status(200)
         .json({ loginSuccess: true, userId: user._id });
