@@ -2,7 +2,7 @@ import User from '../models/User.js';
 
 export const auth = async (req, res, next) => {
     //authentication process
-
+console.log("Cookies received:", req.cookies);
     const token = req.cookies.x_auth;
     
     console.log(token);
