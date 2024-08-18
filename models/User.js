@@ -58,7 +58,7 @@ userSchema.methods.generateToken =  function () {
     //create a Token using jwt
     const user = this;
 
-    const token = jwt.sign({ id: user._id.toHexString() }, 'secretkey');
+    const token = jwt.sign({ id: user._id.toHexString() }, process.env.JWT_SECRET || 'secretkey');
     user.token = token;
 
     return user.save().then(() => token);
@@ -70,7 +70,7 @@ userSchema.statics.findByToken = async function (token) {
     const user = this;
 
     try {
-        const decoded = jwt.verify(token, 'secretkey');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secretkey');
         console.log(decoded);
         const found = await user.findOne({ "_id": decoded.id, "token": token });
         return found;
