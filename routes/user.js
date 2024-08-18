@@ -44,9 +44,13 @@ router.post('/login', async (req, res, next) => {
 
         const token = await user.generateToken();
     
-        res.cookie('x_auth', token)
-            .status(200)
-            .json({ loginSuccess: true, userId: user._id });
+        res.cookie('x_auth', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+        })
+        .status(200)
+        .json({ loginSuccess: true, userId: user._id });
     } catch (err) {
         console.error(err);
         res.status(500).json({
