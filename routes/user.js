@@ -46,7 +46,6 @@ router.post('/login', async (req, res, next) => {
     
         res.cookie('x_auth', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
         })
         .status(200)
