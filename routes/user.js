@@ -43,8 +43,8 @@ router.post('/login', async (req, res, next) => {
     }
 
         const token = await user.generateToken();
-    
-        res.cookie('x_auth', token, {
+    console.log(token);
+    res.cookie('x_auth', token, {
             httpOnly: true,
             sameSite: 'strict',
         })
