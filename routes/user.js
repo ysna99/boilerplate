@@ -44,11 +44,11 @@ router.post('/login', async (req, res, next) => {
 
         const token = await user.generateToken();
     console.log(token);
-    res.cookie('x_auth', token, {
-            sameSite: 'none',
-        })
-        .status(200)
-        .json({ loginSuccess: true, userId: user._id });
+   res.status(200).json({
+            loginSuccess: true,
+            userId: user._id,
+            token, // Send the token to the frontend
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({
