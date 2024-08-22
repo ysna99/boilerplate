@@ -8,6 +8,7 @@ import postRoutes from './routes/post.js'
 import userRoutes from './routes/user.js'
 
 const uri = process.env.MONGODB_URI;
+console.log(uri);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
