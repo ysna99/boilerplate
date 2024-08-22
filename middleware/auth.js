@@ -4,7 +4,7 @@ export const auth = async (req, res, next) => {
     //authentication process
 console.log("Cookies received:", req.cookies);
     const token = req.cookies.x_auth;
-    
+    console.log('디버깅2');
     console.log(token);
     try {
         const user = await User.findByToken(token);
