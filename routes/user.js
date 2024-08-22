@@ -49,7 +49,6 @@ res.cookie('x_auth', token, {
     httpOnly: true, // Prevents client-side JS from accessing the cookie
     secure: true, // Ensures the cookie is only sent over HTTPS
     sameSite: 'none', // Allows the cookie to be sent in cross-site requests
-    domain: 'boilerplate-one-hazel.vercel.app', // Set the domain to your client-side domain
 })
 .status(200)
 .json({ loginSuccess: true, userId: user._id });
