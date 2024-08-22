@@ -7,7 +7,7 @@ import { auth } from './middleware/auth.js';
 import postRoutes from './routes/post.js'
 import userRoutes from './routes/user.js'
 
-const uri = "mongodb+srv://suhwan990203:xRrtnoxRAdskNJN7@boilerplate.gdtimgr.mongodb.net/?retryWrites=true&w=majority&appName=boilerplate"
+const uri = process.env.MONGODB_URI;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
