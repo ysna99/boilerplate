@@ -43,6 +43,7 @@ router.post('/login', async (req, res, next) => {
     }
 
      const token = await user.generateToken();
+    console.log('디버깅1');
     console.log(token);
 res.cookie('x_auth', token, {
     httpOnly: true, // Prevents client-side JS from accessing the cookie
